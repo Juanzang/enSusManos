@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.http.MediaType;
 
 
@@ -26,5 +28,21 @@ public class Controller {
         List<Usuario> usuarios = usuarioServicio.getAllUsers();
         return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
     }
-       
-}
+    
+    @RequestMapping(value="/usuarios", method = RequestMethod.GET)
+   public ResponseEntity<List<Usuario>> obtenerUsuariosFiltro(
+       @RequestParam(value = "userID", required = false) Long userID){
+       List<Usuario> usuarios = usuarioServicio.obtenerUsuariosFiltro(userID);
+               return new ResponseEntity<List<Usuario>>(usuarios,HttpStatus.OK);
+      
+   }
+   
+   @RequestMapping(value = "/login/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> loginUser(@RequestBody Usuario usuario) {
+        String inf = usuarioServicio.loginUser(usuario);
+        return ResponseEntity.ok().body(inf);
+    }
+    
+}    
+
+    

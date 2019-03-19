@@ -23,9 +23,22 @@ public class UsuarioServicio {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
     
-    
-    public List<Usuario> getAllUsers(){
+        public List<Usuario> getAllUsers(){
         return usuarioRepositorio.getAllUsuarios();
+    }
+    //Filtro usuario por ID
+        
+    List<Usuario> obtenerUsuariosFiltro(Long userID) {
+        return usuarioRepositorio.obtenerUsuariosFiltro(userID);   
+    }
+    
+    //Login
+    public String loginUser(Usuario usuario) {
+        if(usuarioRepositorio.loginUser(usuario)){
+            return "Usuario logueado";
+        }else{
+            return "Usuario no logueado";
+        }    
     }
 
 }

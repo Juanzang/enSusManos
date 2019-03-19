@@ -24,13 +24,13 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "Id_Usuario")
-    private Integer usr_id;
+    private long usr_id;
             
     @Column 
     private String Nombre;
     
-    @Column 
-    private String Contraseña;
+    @Column(name = "Contraseña") 
+    private String pass;
     
     @Column
     private String Direccion;
@@ -43,7 +43,7 @@ public class Usuario {
     }
     
     //Getters
-    public Integer getUsr_id() {
+    public long getUsr_id() {
         return usr_id;
     }
 
@@ -52,7 +52,7 @@ public class Usuario {
     }
 
     public String getContraseña() {
-        return Contraseña;
+        return pass;
     }
 
     public String getDireccion() {
@@ -64,7 +64,7 @@ public class Usuario {
     }
 
     //Setters
-    public void setUsr_id(Integer usr_id) {
+    public void setUsr_id(Long usr_id) {
         this.usr_id = usr_id;
     }
 
@@ -73,7 +73,7 @@ public class Usuario {
     }
 
     public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
+        this.pass = Contraseña;
     }
 
     public void setDireccion(String Direccion) {
