@@ -46,10 +46,10 @@ public class UsuarioRepositorio {
     
     //Obtener ciudadano por id
        
-    public List<Usuario> obtenerUsuariosFiltro(Long userID) {
+    public List<Usuario> obtenerUsuariosFiltro(Integer userID) {
             Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(Usuario.class);
-            if(userID!= null){
-                  criteria.add(Restrictions.eq("usr_id", userID));
+            if(userID != null){
+                criteria.add(Restrictions.eq("Id_Usuario", userID));
             }
             return criteria.list();
     }

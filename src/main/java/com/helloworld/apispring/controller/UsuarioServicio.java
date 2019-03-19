@@ -28,7 +28,7 @@ public class UsuarioServicio {
     }
     //Filtro usuario por ID
         
-    List<Usuario> obtenerUsuariosFiltro(Long userID) {
+    List<Usuario> getUsersID(Integer userID) {
         return usuarioRepositorio.obtenerUsuariosFiltro(userID);   
     }
     

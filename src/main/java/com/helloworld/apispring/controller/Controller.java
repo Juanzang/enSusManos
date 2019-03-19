@@ -29,15 +29,17 @@ public class Controller {
         return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
     }
     
-    @RequestMapping(value="/usuarios", method = RequestMethod.GET)
-   public ResponseEntity<List<Usuario>> obtenerUsuariosFiltro(
-       @RequestParam(value = "userID", required = false) Long userID){
-       List<Usuario> usuarios = usuarioServicio.obtenerUsuariosFiltro(userID);
-               return new ResponseEntity<List<Usuario>>(usuarios,HttpStatus.OK);
+    @RequestMapping(value="/IdUser/{Id_Usuario}", method = RequestMethod.GET)
+    public ResponseEntity<List<Usuario>> obtenerUsuariosFiltro(
+       @RequestParam(value = "Id_Usuario") Integer userID){
+       List<Usuario> IdUser = usuarioServicio.getUsersID(userID);
+               return new ResponseEntity<List<Usuario>>(IdUser,HttpStatus.OK);
       
    }
+    
+    
    
-   @RequestMapping(value = "/login/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/login/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> loginUser(@RequestBody Usuario usuario) {
         String inf = usuarioServicio.loginUser(usuario);
         return ResponseEntity.ok().body(inf);
